@@ -1,0 +1,26 @@
+{% extends "ff/base.html" %} {% block title %} WhiteBoard {% endblock %} {% load static %} {% block body %}
+
+<div>
+    <img class="heroImg" src="{% static 'ff/img/hero.jpg' %}">
+</div>
+<main class="">
+    <section class="container">
+        
+        <h1>Categories</h1>
+        
+        <h4 class="caps">{{ cat }}</h4>
+        <div class="vid_row">
+            {% for product in products %}
+            <div class="vid_box">
+                <a href="">
+                    <!-- media shouldnt be manually added -->
+                    <img src="media/{{ product.thumbnail1 }}" alt="">
+                </a>
+                <h6 class="vid_title">{{ product.name }}</h6>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
