@@ -5,15 +5,114 @@
 </div>
 <main class="">
     <section class="container">
-        <h4 class="caps">{{ cat }}</h4>
-        <div class="p_box">
-            <a href="">
-                <img src="media/{{ product.thumbnail1 }}" alt="">
-            </a>
-            <h6 class="p_title caps">{{ product.name }} <small class="flite">| Retails at: {{ product.retailPrice }}</small></h6> 
-            {{ product.thumbnail1 }}
-            
+        
+        <div id="myModal" class="modal">
+            asdlk
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Is your feet wide, average or narrow?</p>
+                <div class="btnchoices">
+                    
+                    <button class="space btn btn-dark" id="wide">Wide</button>
+                    <button class="space btn btn-dark" id="average">Average</button>
+                    <button class="space btn btn-dark" id="narrow">Narrow</button>
+                </div>
+            </div>
+          
         </div>
+        <div class="product">
+            
+            <div class="left">
+                <div class="p_box">
+                    <a href="">
+                        <img src="{{ up }}{{ product.thumbnail1.url }}" alt="">
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="right">
+                <div class="details">
+                    <h2 class="caps">{{ product.name }}</h2>
+                    <p>{{ product.desc }}}</p>
+                    <p>Stock left: {{ product.qtyin }}</p>
+                    <h6 class="p_title caps">${{ product.rentPrice }} <small class="flite">| Retails at: ${{ product.retailPrice }}</small></h6>
+                    <div class="sizesAvailable">
+                        {% if sizes %}
+                            <p><strong>US Sizes</strong></p>
+                        {% endif %}
+                        {% for sk, size in sizes.items %}
+                            {% if size.avail %}
+                                <div class="box"><span>{{ size.name }}</span></div>
+                            {% else %}
+                                <div class="box oos" data-toggle="tooltip" title="Out of Stock"><span>{{ size.name }}</span></div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div id="feedback"></div>
+                </div>
+                <button class="space btn btn-dark" id="myBtn">Rent</button>
+            </div>
+        </div>
+
+        <div class="rp">
+            <h4 class="caps">Related products from {{ cat }}</h4>
+            <div class="p_row">
+                {% for product in products %}
+                <div class="p_box">
+                    <a href="{{ product.productType.id }}/{{ product.id }}">
+                        <!-- media shouldnt be manually added -->
+                        <img src="{{ product.thumbnail1.url }}" alt="">
+                    </a>
+                    <h6 class="p_title caps">{{ product.name }}</h6> 
+                    <h6 class="p_title caps">${{ product.rentPrice }} <small class="flite">| Retails at: {{ product.retailPrice }}</small></h6> 
+                    
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+        
+        
     </section>
 </main>
+<script>
+    // document.getElementById('myBtn').addEventListener("click", function() {
+    //     console.log("hi")
+    // });
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    var wide = document.getElementById("wide");
+    var average = document.getElementById("average");
+    var narrow = document.getElementById("narrow");
+    var fb = document.getElementById("feedback");
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+    wide.onclick = function() {
+        fb.innerHTML="The Nike Air Force 1 has a wider cut so you'll likely fit this shoe well"
+        modal.style.display = "none";
+    }
+    average.onclick = function() {
+        fb.innerHTML="The Nike Air Force 1 has a wider cut so you might find it a bit loose"
+        modal.style.display = "none";
+    }
+    narrow.onclick = function() {
+        fb.innerHTML="The Nike Air Force 1 has a wider cut so this well be quite loose for you"
+        modal.style.display = "none";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+</script>
 {% endblock %}
+

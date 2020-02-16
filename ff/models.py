@@ -1,8 +1,7 @@
 from django.db import models
 # import calendar   
 
-# shoeSizesUS = [(5.0, "US 5.0"), (5.5, "US 5.5"), (6.0, "US 6.0"), (6.5, "US 6.5"), (7.0, "US 7.0"), (7.5, "US 7.5"), (8.0, "US 8.0"), (8.5, "US 8.5"), (9.0, "US 9.0"), (9.5, "US 9.5"), (10.0, "US 10.0"), (10.5, "US 10.5"), (11.0, "US 11.0"), (11.5, "US 11.5"), (12.0, "US 12.0"), (13.0, "US 13.0"), (14.0, "US 14.0"), (15.0, "US 15.0"), (16.0, "US 16.0")]
-shoeSizesUS = [(8.0, "US 8.0"), (8.5, "US 8.5"), (9.0, "US 9.0"), (9.5, "US 9.5"), (10.0, "US 10.0"), (10.5, "US 10.5"), (11.0, "US 11.0"), (11.5, "US 11.5"), (12.0, "US 12.0")]
+# shoeSizesUS = [(8.0, "US 8.0"), (8.5, "US 8.5"), (9.0, "US 9.0"), (9.5, "US 9.5"), (10.0, "US 10.0"), (10.5, "US 10.5"), (11.0, "US 11.0"), (11.5, "US 11.5"), (12.0, "US 12.0")]
 
 class ProductType(models.Model):
     typeName = models.CharField(max_length=50, default='Product Type', blank=False, unique=True)
@@ -20,9 +19,7 @@ class Shoe(models.Model):
     thumbnail3 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/shoes')
     rentPrice = models.PositiveSmallIntegerField(default=0)
     retailPrice = models.PositiveSmallIntegerField(default=0)
-    
     # size = models.DecimalField(max_digits=3, decimal_places=1, choices=shoeSizesUS)
-
     qtyin = models.PositiveSmallIntegerField(default="10")
     usSize8_0 = models.BooleanField(default=True)
     usSize8_5 = models.BooleanField(default=True)
@@ -62,9 +59,6 @@ class Bag(models.Model):
     thumbnail3 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/bags')
     rentPrice = models.PositiveSmallIntegerField(default=0)
     retailPrice = models.PositiveSmallIntegerField(default=0)
-# class Captions(models.Model):
-#     course 
-
 
 # def dup(sender, instance, **kwargs):
 #     daysCount = instance.operatingHrs.all()

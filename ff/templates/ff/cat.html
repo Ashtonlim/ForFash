@@ -1,7 +1,7 @@
 {% extends "ff/base.html" %} {% block title %} ForFash - {{ cat }} {% endblock %} {% load static %} {% block body %}
 
 <div>
-    <img class="heroImg" src="{% static 'ff/img/hero.jpg' %}">
+    <img class="heroImg" src="{% static '/ff/img/hero.jpg' %}">
 </div>
 <main class="">
     <section class="container">
@@ -10,14 +10,15 @@
         <div class="p_row">
             {% for product in products %}
             <div class="p_box">
-                <a href="">
+                <a href="{{ product.productType.id }}/{{ product.id }}">
                     <!-- media shouldnt be manually added -->
                     <img src="{{ product.thumbnail1.url }}" alt="">
                 </a>
                 <h6 class="p_title caps">{{ product.name }}</h6> 
-                <h6 class="p_title caps">${{ product.rentPrice }} <small class="flite">| Retails at: {{ product.retailPrice }}</small></h6> 
+                <h6 class="p_title caps">${{ product.rentPrice }} <small class="flite">| Retails at: ${{ product.retailPrice }}</small></h6> 
                 
             </div>
+            
             {% endfor %}
         </div>
     </section>

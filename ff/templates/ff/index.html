@@ -6,32 +6,19 @@
 <main class="">
     <section class="container">
         {% for ck, products in productCats.items %}
-            <h4 class="caps">{{ products.courseName }}</h4>
+            <h4 class="caps">{{ products.catName }}</h4>
             <div class="p_row">
                 {% for vk, product in products.cp.items %}
                 <div class="p_box">
                     <a href="{{ product.pType }}/{{ product.id }}"><img src="{{ product.thumbnail1 }}" alt=""></a>
                     <h6 class="p_title caps">{{ product.name }}</h6> 
-                    <h6 class="p_title caps">${{ product.rentPrice }} <small class="flite">| Retails at: {{ product.retailPrice }}</small></h6> 
+                    <h6 class="p_title caps">${{ product.rentPrice }} <small class="flite">| Retails at: ${{ product.retailPrice }}</small></h6> 
                 </div>
                 {% endfor %}
             </div>
             </div>
         {% endfor %}
         
-        <!-- <h4 class="caps">shoes</h4> -->
-        <div class="p_row">
-            {% for shoe in shoes %}
-            <div class="p_box">
-                <a href="">
-                    <!-- media shouldnt be manually added -->
-                    <img src="media/{{ shoe.thumbnail1 }}" alt="">
-                </a>
-                <h6 class="p_title caps">{{ shoe.name }} <small class="flite">| Retails at: {{ shoe.retailPrice }}</small></h6> 
-                
-            </div>
-            {% endfor %}
-        </div>
     </section>
 </main>
 {% endblock %}
