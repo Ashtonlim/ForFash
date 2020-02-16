@@ -1,4 +1,4 @@
-{% extends "ff/base.html" %} {% block title %} WhiteBoard {% endblock %} {% load static %} {% block body %}
+{% extends "ff/base.html" %} {% block title %} ForFash - {{ cat }} {% endblock %} {% load static %} {% block body %}
 
 <div>
     <img class="heroImg" src="{% static 'ff/img/hero.jpg' %}">
@@ -6,17 +6,16 @@
 <main class="">
     <section class="container">
         
-        <h1>Categories</h1>
-        
-        <h4 class="caps">{{ cat }}</h4>
-        <div class="vid_row">
+        <h2 class="caps">{{ cat }}</h2>
+        <div class="p_row">
             {% for product in products %}
-            <div class="vid_box">
+            <div class="p_box">
                 <a href="">
                     <!-- media shouldnt be manually added -->
-                    <img src="media/{{ product.thumbnail1 }}" alt="">
+                    <img src="{{ product.thumbnail1.url }}" alt="">
                 </a>
-                <h6 class="vid_title">{{ product.name }}</h6>
+                <h6 class="p_title caps">{{ product.name }}</h6> 
+                <h6 class="p_title caps">${{ product.rentPrice }} <small class="flite">| Retails at: {{ product.retailPrice }}</small></h6> 
                 
             </div>
             {% endfor %}

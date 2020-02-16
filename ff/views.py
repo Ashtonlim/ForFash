@@ -8,15 +8,22 @@ from django.db.models import Q
 from itertools import chain
 from .models import ProductType, Shoe, Skirt, Bag
 
+from .utils import sortProductsCats
+
 def index(request):
     cats = ProductType.objects.all()
     shoes = Shoe.objects.all()[:4]
+    skirts = Skirt.objects.all()[:4]
+    bags = Bag.objects.all()[:4]
     
+    # print(sortProductsCats(cats, shoes, skirts, bags))    
+
     context = {
-        "shoes" : shoes,
+        "productCats" : sortProductsCats(cats, shoes, skirts, bags),
+        # "shoes" : shoes,
         "cats" : cats
     }
-    print(context)
+    # print(context)
     return render(request, 'ff/index.html', context)
 
 def cat(request, cat_id):
@@ -36,6 +43,24 @@ def cat(request, cat_id):
     }
     return render(request, 'ff/cat.html', context)
 
+def product(request, cat_id, p_id):
+    # productsOfptype = ProductType.objects.filter(pk=cat_id)
+    cats = ProductType.objects.all()
+    l = {
+        2 : Shoe.objects.all,
+        3 : Skirt.objects.all,
+        4 : Bag.objects.all
+    }
+    productsOfptype = l[cat_id]()
+    cat = productsOfptype[0].productType.typeName
+    product = productsOfptype.filter(pk=p_id).values()[0]
+    context = {
+        "product" : product,
+        "cats" : cats,
+        "cat" : cat
+    }
+    return render(request, 'ff/product.html', context)
+
 
 # # def search(request):
 # #     form = q(request.GET)
@@ -50,3 +75,4 @@ def cat(request, cat_id):
 # class VideoListCreate(generics.ListCreateAPIView):
 #     queryset = Video.objects.all()
 #     serializer_class = VideoSerializer
+

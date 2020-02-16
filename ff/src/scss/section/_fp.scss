@@ -1,10 +1,10 @@
-.vid_row {
+.p_row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
 
-    .vid_box {
+    .p_box {
         padding-right: 15px;
         margin-bottom: 45px;
         width: 23%;
@@ -28,18 +28,20 @@
         margin-top: 0px;
         margin-bottom: 0.1em;
     }
+    .p_title {
+        font-weight: bold;
+    }
+    
     
 }
 
-.vid_title {
-    font-weight: bold;
-}
-
-.vid_subs {
-    font-size: 0.75em;
-}
 
 .caps {
     text-transform: capitalize
 }
+
+.flite {
+    color: #777
+}
+
 

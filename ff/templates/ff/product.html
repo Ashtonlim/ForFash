@@ -1,0 +1,19 @@
+{% extends "ff/base.html" %} {% block title %} ForFash - {{ product.name }} {% endblock %} {% load static %} {% block body %} 
+
+<div>
+    <img class="heroImg" src="{% static 'ff/img/hero.jpg' %}">
+</div>
+<main class="">
+    <section class="container">
+        <h4 class="caps">{{ cat }}</h4>
+        <div class="p_box">
+            <a href="">
+                <img src="media/{{ product.thumbnail1 }}" alt="">
+            </a>
+            <h6 class="p_title caps">{{ product.name }} <small class="flite">| Retails at: {{ product.retailPrice }}</small></h6> 
+            {{ product.thumbnail1 }}
+            
+        </div>
+    </section>
+</main>
+{% endblock %}

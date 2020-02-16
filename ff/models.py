@@ -18,6 +18,9 @@ class Shoe(models.Model):
     thumbnail1 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/shoes')
     thumbnail2 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/shoes')
     thumbnail3 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/shoes')
+    rentPrice = models.PositiveSmallIntegerField(default=0)
+    retailPrice = models.PositiveSmallIntegerField(default=0)
+    
     # size = models.DecimalField(max_digits=3, decimal_places=1, choices=shoeSizesUS)
 
     qtyin = models.PositiveSmallIntegerField(default="10")
@@ -47,7 +50,8 @@ class Skirt(models.Model):
     thumbnail1 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/skirt')
     thumbnail2 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/skirt')
     thumbnail3 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/skirt')
-
+    rentPrice = models.PositiveSmallIntegerField(default=0)
+    retailPrice = models.PositiveSmallIntegerField(default=0)
 class Bag(models.Model):
     productType = models.ForeignKey(ProductType, on_delete=models.CASCADE, related_name='bagptype')
     name = models.CharField(max_length=150, default='Bag Type', blank=False, unique=True)
@@ -56,7 +60,8 @@ class Bag(models.Model):
     thumbnail1 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/bags')
     thumbnail2 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/bags')
     thumbnail3 = models.ImageField(default='default-thumbnail-shoes.png', upload_to='thumbnails/bags')
-
+    rentPrice = models.PositiveSmallIntegerField(default=0)
+    retailPrice = models.PositiveSmallIntegerField(default=0)
 # class Captions(models.Model):
 #     course 
 
